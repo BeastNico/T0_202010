@@ -21,6 +21,7 @@ public class ArregloDinamico implements IArregloDinamico {
          */
         private String elementos[ ];
 
+        
         /**
          * Construir un arreglo con la capacidad maxima inicial.
          * @param max Capacidad maxima inicial
@@ -56,13 +57,34 @@ public class ArregloDinamico implements IArregloDinamico {
 		public int darTamano() {
 			return tamanoAct;
 		}
-
+  
+		public boolean estaVacia()
+		{
+			boolean rta= true;
+			for (int i = 0; i < elementos.length; i++) {
+				if(elementos[i]!=null)
+				{
+					rta = false;
+				}
+			}
+			return rta;
+		}
 		public String darElemento(int i) {
 			// TODO implementar
+			if(!estaVacia())
+			{
+			 return elementos[i];
+			}
+			else
+			{
+		
 			return null;
-		}
+			}
+			}
 
 		public String buscar(String dato) {
+			
+			
 			// TODO implementar
 			// Recomendacion: Usar el criterio de comparacion natural (metodo compareTo()) definido en Strings.
 			return null;
@@ -70,6 +92,15 @@ public class ArregloDinamico implements IArregloDinamico {
 
 		public String eliminar(String dato) {
 			// TODO implementar
+			for (int i = 0; i < elementos.length; i++) {  
+				if(dato.compareTo( elementos[i])==0)
+				{
+					for (int j = i; j < elementos.length - 1; j++) {
+	                    elementos[j] = elementos[j+1];
+	                }
+	                elementos[elementos.length - 1] = null;
+				}
+			}
 			// Recomendacion: Usar el criterio de comparacion natural (metodo compareTo()) definido en Strings.
 			return null;
 		}
